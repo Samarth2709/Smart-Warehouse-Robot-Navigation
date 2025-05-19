@@ -74,5 +74,3 @@ Tests **must pass** on an unseen random grid (`pytest`).  Do **not** modify `gri
 * The grid uses **4‑neighbour (Manhattan)** moves (no diagonals).
 * A\* with an admissible Manhattan‑distance heuristic is recommended.
 * Your path should include **both** endpoints.
-* Feel free to cache/search once and reuse for both legs.
-* Keep your code self‑contained (standard library only).
