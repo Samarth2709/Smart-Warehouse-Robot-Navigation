@@ -50,12 +50,15 @@ pip install -U pytest
 
 Open `navigation.py` and replace the `raise NotImplementedError` line with your own code.
 Your function should accept the grid, start (S), pickup (P), and drop-off (D) coordinates and return a single list of coordinates representing the path from S to P, and then P to D.
+Your immplementation should return an empty list if there exists no Manhattan path from S to P to D. 
 
 ### 4  Run the tests
 
 ```bash
 pytest -q        # prints `1 passed` if your paths are valid
 ```
+These cases are not comprehensive tests for your implementation. 
+This only verifies if the path is valid for a grid which gaurantees a valid path exists.
 
 ---
 
