@@ -16,12 +16,8 @@ def test_pathfinding(rows, cols, seed):
     grid, start, pickup, dropoff = generate_grid(rows, cols, obstacle_prob=0.25, seed=seed)
 
     try:
-        # Leg 1: S ➔ P
-        path1 = find_shortest_path(grid, start, pickup)
-        assert is_valid_path(grid, start, pickup, path1)
-
-        # Leg 2: P ➔ D
-        path2 = find_shortest_path(grid, pickup, dropoff)
-        assert is_valid_path(grid, pickup, dropoff, path2)
+        # Find the full path: S ➔ P ➔ D
+        full_path = find_shortest_path(grid, start, pickup, dropoff)
+        assert is_valid_path(grid, start, pickup, dropoff, full_path)
     except NotImplementedError:
         pytest.xfail("Path‑finding not yet implemented")
