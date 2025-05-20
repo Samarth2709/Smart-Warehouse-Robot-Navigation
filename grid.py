@@ -95,11 +95,8 @@ def print_grid(grid: Grid) -> None:
 
 
 if __name__ == "__main__":
-    # Get m and n from CLI arguments
-    if len(sys.argv) != 3:
-        print("Usage: python grid.py <m> <n>")
-        sys.exit(1)
-    m = int(sys.argv[1])
-    n = int(sys.argv[2])
-    g, s, p, d = generate_grid(n, m, obstacle_prob=0.25)
+    m = 12
+    n = 8
+    seed = 1
+    g, s, p, d = generate_grid(n, m, obstacle_prob=0.25, seed = 1)
     print_grid(g)
