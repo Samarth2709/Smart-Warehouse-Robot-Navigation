@@ -49,6 +49,7 @@ pip install -U pytest
 ### 3  Implement `find_shortest_path` in **navigation.py**
 
 Open `navigation.py` and replace the `raise NotImplementedError` line with your own code.
+Your function should accept the grid, start (S), pickup (P), and drop-off (D) coordinates and return a single list of coordinates representing the path from S to P, and then P to D.
 
 ### 4  Run the tests
 
@@ -72,5 +73,5 @@ Tests **must pass** on an unseen random grid (`pytest`).  Do **not** modify `gri
 ## Rules & Tips
 
 * The grid uses **4‑neighbour (Manhattan)** moves (no diagonals).
-* A\* with an admissible Manhattan‑distance heuristic is recommended.
-* Your path should include **both** endpoints.
+* A* with an admissible Manhattan‑distance heuristic is recommended.
+* Your path should start at S, go through P, and end at D. The list of coordinates should represent this entire journey.
