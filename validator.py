@@ -1,4 +1,4 @@
-"""validator.py
+"""
 Utilities to verify that a candidate path satisfies all rules.
 
 Usage
@@ -20,19 +20,32 @@ def is_adjacent(a: Coord, b: Coord) -> bool:
     return abs(a[0] - b[0]) + abs(a[1] - b[1]) == 1
 
 
-def is_valid_path(grid: Grid, start: Coord, goal: Coord, path: List[Coord]) -> bool:
-    """Return True if *path* obeys all constraints.
+def is_valid_path(grid: Grid, start: Coord, pickup: Coord, dropoff: Coord, path: List[Coord]) -> bool:
+    """Return True if *path* obeys all constraints for S -> P -> D.
 
     Constraints
     -----------
-    1. Non‑empty; first == start; last == goal
+    1. Non‑empty; first == start; last == dropoff; pickup is in path
     2. Stays inside bounds
     3. Moves only one step 4‑directionally at a time
     4. Does not step on obstacle cells ("#")
     """
     if not path:
         return False
-    if path[0] != start or path[-1] != goal:
+    if path[0] != start or path[-1] != dropoff:
+        return False
+    if pickup not in path:
+        return False
+    if len(path) < 3:
+        return False
+    
+    # Pickup should never equal start or dropoff
+    if pickup == start or pickup == dropoff:
+        return False
+    
+    pickup_index = path.index(pickup)
+    # Make sure the index of pickup is between 0 and len(path)-1
+    if pickup_index < 0 or pickup_index >= len(path):
         return False
 
     rows, cols = len(grid), len(grid[0])
